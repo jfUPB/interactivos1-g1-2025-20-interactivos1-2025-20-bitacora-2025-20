@@ -121,7 +121,7 @@ Evalúa la respuesta a esta pregunta y solicitud: `Explica cómo funciona el sis
 
 # Fase apply
 
-## **Puntuación Final:** `[  ]` / 15
+## **Puntuación Final:** `[  ]` / 10
 
 ### Explicación del Funcionamiento del Sistema Interactivo (Actividad 05)
 
@@ -163,23 +163,6 @@ Evalúa la entrega de los siguientes elementos en la bitácora: `Escribe el enla
 
 ---
 
-### Generación de Imágenes en micro:bit desde p5.js (Actividad 07)
-
-Evalúa la entrega de los siguientes elementos en la bitácora: `Escribe el enlace a tu programa en el editor de p5.js. Copia el código de tu programa en la bitácora (usando markdown y el lenguaje javascript). Copia el código del micro:bit en la bitácora (usando markdown y el lenguaje python).`
-
-> **5 (Completo y Preciso):** Se entregan en la bitácora los tres elementos solicitados: un enlace funcional al editor de p5.js, el código de p5.js formateado en un bloque markdown para `javascript`, y el código del micro:bit formateado en un bloque markdown para `python`.
->
-> **4 (Logrado):** Se entregan los tres elementos, pero se presenta una única omisión o error menor: el enlace no es funcional, uno de los dos bloques de código no está formateado correctamente con markdown, o falta uno de los dos bloques de código.
->
-> **3 (Suficiente):** Se entregan únicamente dos de los tres elementos solicitados.
->
-> **2 (En Desarrollo):** Se entrega únicamente uno de los tres elementos solicitados.
->
-> **1 (Inicial):** Se realiza una entrega que no incluye ninguno de los elementos solicitados de forma correcta (p. ej., solo texto descriptivo).
->
-> **0 (No Realizado):** No se presenta evidencia alguna para el criterio.
-
-**Calificación Obtenida:** `[  ]` / 5
 
 
 
