@@ -9,7 +9,9 @@
 RTA: 
 
 **INPUTS:** El botón A
+
 **OUTPUTS:** Cambio de color en la pantalla
+
 **PROCESO**
 
 Primero, en el código se de debe enunciar la tecla A del microbit para que cuando se oprima este, en la pantalla del pc el cuadrado cambie de color. Luego en la parte de presionar el botón "A" se pone "is_pressed" para que al momento de interactuar con el botón en el microbit, la orden se mantenga cuando uno presiona el botón y no la ejecute de manera rápida y no continua. Cabe recalcar que para esto funcione, también hay que ponerle un tiempo de reacción, enunciado como "sleep" para que cuando se ejecute la acción, la instrucción no sea tan corta. 
