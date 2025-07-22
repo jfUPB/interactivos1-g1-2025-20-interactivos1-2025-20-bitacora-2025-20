@@ -172,4 +172,4 @@ while True:
     if button_b.was_pressed():
         uart.write('B')
 
-    sleep(100) 
+sleep(100) 
