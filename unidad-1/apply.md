@@ -42,13 +42,13 @@ async function connectToMicrobit() {
     port = await navigator.serial.requestPort();
     await port.open({ baudRate: 115200 });
 
-    const decoder = new TextDecoderStream();
-    const inputDone = port.readable.pipeTo(decoder.writable);
-    const inputStream = decoder.readable;
+const decoder = new TextDecoderStream();
+const inputDone = port.readable.pipeTo(decoder.writable);
+const inputStream = decoder.readable;
 
-    reader = inputStream.getReader();
+reader = inputStream.getReader();
 
-    readSerialLoop();
+readSerialLoop();
   } catch (err) {
     console.error("Error al conectar con micro:bit:", err);
   }
