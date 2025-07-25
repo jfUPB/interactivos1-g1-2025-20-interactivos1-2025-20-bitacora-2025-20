@@ -92,7 +92,7 @@ function connectBtnClick() {
 En el código se especifica el tamaño del lienzo, el color al que va a cambiar el cuadrado, en este caso si no se presional el botón, será verde y si se presiona, cambia a rojo, para esto se utiliza un condicional. También se encuentra el código para crear el botón de conectar el microbit y el de finalizar la conección (Siendo el mismo solo que cuando se oprime conectar, al estar conectado la opción pasa de aparecer como conectar a desconectar.)
   
 
-## Actividad 06
+### Actividad 06
 
 **1. Enlace al editor p5.js:** 
 
