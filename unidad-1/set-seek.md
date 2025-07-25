@@ -32,8 +32,7 @@ RTA: Los inputs del sistema fueron el botón A, el botón B, el "shake" y el bot
 ### Actividad 04
 Enlace
 
-https://editor.p5js.org/
-
+[Aquí está mi código](https://editor.p5js.org/)
 
 Imagen
 
@@ -41,6 +40,7 @@ Imagen
 
 Código
 
+``` js
 let r, g, b;
 
 function setup() {
