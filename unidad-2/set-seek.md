@@ -10,7 +10,8 @@
 - "pixel1.update()" sirve para actualizar la información que se le asigna a los pixeles
 - **Instanciar:** es crear un objeto a partir de la clase que nosotros definimos.
 - Los datos se inician a través del constructor de la clase, que tiene el mismo nombre de la clase.
-  -
+
+```python
 class Miclase{
     int midata1;
     float midata2;
@@ -29,7 +30,7 @@ Miclase mivariable =new Miclase();
 mivariable = new Miclase();
 
         mivariable.Test(25);
-
+```
         
 
 - "mivariable" contiene la dirección de memoria donde se ubica el objeto.
