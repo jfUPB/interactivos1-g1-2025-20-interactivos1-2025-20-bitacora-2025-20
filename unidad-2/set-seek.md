@@ -55,7 +55,7 @@ RTA:
   c. Finalmente se pone el condicional "while true:" que significa que mientras esos datos asignados a los objetos se estén cumpliendo correctamente en el programa, se llame al método update para que los datos recopilados en cada objeto se vayan actualizando mientras que el programa siga corriendo.
 
 
-4. ¿Cuáles son los estados en el programa?
+2. ¿Cuáles son los estados en el programa?
 
 RTA: Un estado es una **condición de espera**, es decir, qué estoy esperando. En este caso, el programa tiene un pseudoestado que sería "init" y que simboliza que se está inicializando un objeto. Por otro lado el estado "WaitTimeOut" sirve para esperar el momento en que se ejecuta el método.
 
