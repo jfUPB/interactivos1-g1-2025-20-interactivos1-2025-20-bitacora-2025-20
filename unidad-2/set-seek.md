@@ -42,7 +42,7 @@ mivariable = new Miclase();
 
 
 
-### Actividad 1
+### Actividad 01
 
 1. Describe detalladamente como funciona el programa.
 
@@ -66,3 +66,195 @@ RTA: El evento es **preguntar si algo ha ocurrido**. En el programa el evento es
 4. ¿Cuáles son las acciones en el programa?
 
 RTA: Acción es **lo que se ejecuta cuando ocurre lo que se está esperando**. En este caso, las acciones del programa son encender o apagar los leds y ver la hora.
+
+### Actividad 02
+
+1. Escribe el código que soluciona este problema en tu bitácora.
+
+RTA: 
+
+```python
+from microbit import *
+import utime
+
+class Pixel:
+    def __init__(self,pixelX,pixelY,initState,interval):
+        self.state = "Init"
+        self.startTime = 0
+        self.interval = interval
+        self.pixelX = pixelX
+        self.pixelY = pixelY
+        self.pixelState = initState
+        self.next = None
+        
+    def get_next(self,next_pixel):
+        self.next = next_pixel
+                
+    def activate(self):
+        if self.state == "Init":
+            self.state = "Activated"
+        
+    def update(self):
+        if self.state == "Activated":
+            self.pixelState = 9 
+            self.startTime = utime.ticks_ms()
+            display.set_pixel(self.pixelX,self.pixelY,self.pixelState)
+            self.state = "Waiting"
+
+        elif self.state == "Waiting":
+            if utime.ticks_diff(utime.ticks_ms(),self.startTime) > self.interval:
+                self.pixelState = 0
+                display.set_pixel(self.pixelX,self.pixelY,self.pixelState)
+                self.state = "Init"
+                if self.next:
+                    self.next.activate()
+                
+pixel1 = Pixel(1,3,0,1000)
+pixel2 = Pixel(2,2,0,2000)
+pixel3 = Pixel(3,1,0,3000)
+
+pixel1.get_next(pixel2)   
+pixel2.get_next(pixel3)
+pixel3.get_next(pixel1)
+
+pixel1.activate()
+while True:
+    pixel1.update()
+    pixel2.update()
+    pixel3.update()
+```
+2. Identifica los estados, eventos y acciones en tu código.
+
+RTA: 
+
+ESTADOS:
+
+- STATE_INIT (Pseudoestado)
+  
+- Activated
+
+- Waiting
+
+EVENTOS:
+
+- Esperar a que pasen 3 segundos
+
+- Esperar a que pasen 2 segundos
+
+- Esperar a que pase 1 segundo
+
+ACCIONES:
+
+- Mostrar el pixel 1
+
+- Mostrar el pixel 2
+
+- Mostrar el pixel 3
+
+### Actividad 03
+
+1. Explica por qué decimos que este programa permite realizar de manera concurrente varias tareas.
+
+RTA: Este estado es concurrente porque permite hacer varias tareas tareas de manera multiplexada, es decir, que muchas entidades utilizen un mismo recurso, en este caso la cpu. 
+
+Identifica los estados, eventos y acciones en el programa.
+
+RTA: En este caso, tenemos:
+
+ESTADOS:
+
+- STATE_INIT (Pseudoestado)
+  
+- STATE_HAPPY
+  
+- STATE_SMILE
+  
+- STATE_SAD
+
+EVENTOS:
+
+- Esperar a que pasen 1.5 segundos
+
+- Esperar a que pasen 2 segundos
+
+- Esperar a que pase 1 segundo
+
+- Se presiona el botón A
+
+ACCIONES:
+
+- Mostrar carita feliz
+
+- Mostrar sonrisa
+
+- Mostrar carita triste
+
+2. Describe y aplica al menos 3 vectores de prueba para el programa. Para definir un vector de prueba debes llevar al sistema a un estado, generar los eventos y observar el estado siguiente y las acciones que ocurrirán. Por tanto, un vector de prueba tiene unas condiciones iniciales del sistema, unos resultados esperados y los resultados realmente obtenidos. Si el resultado obtenido es igual al esperado entonces el sistema pasó el vector de prueba, de lo contrario el sistema puede tener un error.
+
+RTA: 
+
+- Si estoy en el estado "STATE_HAPPY" y espero 1.5 segundos se muestra una sonrisa y se pasa al estado "STATE_SMILE".
+- Si estoy en el estado "STATE_SAD" y se oprime el botón A, se muestra una sonrisa y se pasa al estado "STATE_SMILE".
+- Si estoy en el estado "STATE_SMILE" y espero 1 segundo, se muestra una cara triste y se pasa al estado "STATE_SAD".
+
+```python
+from microbit import *
+import utime
+
+STATE_INIT=0
+STATE_HAPPY=1
+STATE_SMILE=2
+STATE_SAD=3
+
+currentstate = STATE_INIT 
+startTime=0
+intervalHappy=1500
+intervalSmile=1000
+intervalSad=2000
+
+def tarea1():
+    global currentstate
+    global startTime
+    if currentstate==STATE_INIT:
+        display.show(Image.HAPPY)
+        startTime = utime.ticks_ms()
+        currentstate=STATE_HAPPY
+        
+    elif currentstate==STATE_HAPPY:
+        if utime.ticks_diff(utime.ticks_ms(),startTime) > intervalHappy:
+            display.show(Image.SMILE)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_SMILE
+            
+        if button_a.was_pressed():
+            display.show(Image.SAD)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_SAD
+            
+    elif currentstate==STATE_SMILE:
+        if utime.ticks_diff(utime.ticks_ms(),startTime) > intervalSmile:
+            display.show(Image.SAD)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_SAD
+
+        if button_a.was_pressed():
+            display.show(Image.HAPPY)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_HAPPY
+            
+    elif currentstate==STATE_SAD:
+        if utime.ticks_diff(utime.ticks_ms(),startTime) > intervalSad:
+            display.show(Image.HAPPY)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_HAPPY
+
+        if button_a.was_pressed():
+            display.show(Image.SMILE)
+            startTime = utime.ticks_ms()
+            currentstate=STATE_SMILE
+    else:
+        display.show(Image.RABBIT)
+    
+while True:
+    tarea1()
+```
