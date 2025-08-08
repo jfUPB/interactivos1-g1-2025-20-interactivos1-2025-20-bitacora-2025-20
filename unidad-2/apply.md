@@ -108,7 +108,8 @@ c. Si en STATE_EXPLOSION se presiona el "touch", pasa de STATE_EXPLOSION a STATE
 
 d. Si en STATE_CONFIGURACION se presiona el botón A, se suma 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
 
-e. d. Si en STATE_CONFIGURACION se presiona el botón B, se resta 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
+e. Si en STATE_CONFIGURACION se presiona el botón B, se resta 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
+
 
 
 
