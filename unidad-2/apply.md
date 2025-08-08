@@ -28,7 +28,8 @@ g. Para volver a modo de configuración deberás tocar el botón touch.
 
 **DIAGRAMA DE ESTADOS/EVENTOS/ACCIONES**
 
-<img width="500" height="500" alt="Diagrama_Estados_Eventos_Acciones" src="https://github.com/user-attachments/assets/d4f6f42f-dbe3-46aa-8bd0-4a11aec00e56" />
+
+<img width="1251" height="1302" alt="Diagrama_de_E_E_A" />
 
 
 ### ACTIVIDAD 05
@@ -41,19 +42,17 @@ Implementa el código para la bomba temporizada usando mycropython y el micro:bi
 from microbit import *
 import utime
 
-# Definimos los estados
 STATE_INIT = 0
 STATE_CONFIGURACION = 1
 STATE_CUENTAREGRESIVA = 2
 STATE_EXPLOSION = 3
 
-# Estado inicial
-state = STATE_INIT
+
+state = STATE_INIT #Estado inicial
 start_time = 0
-cuentaRegresiva = 20  # Valor inicial
+cuentaRegresiva = 20  # Valor predeterminado de la cuenta regresiva
 
 while True:
-    # --- STATE_INIT ---
     if state == STATE_INIT:
         display.scroll("START")
         state = STATE_CONFIGURACION
@@ -109,6 +108,7 @@ c. Si en STATE_EXPLOSION se presiona el "touch", pasa de STATE_EXPLOSION a STATE
 d. Si en STATE_CONFIGURACION se presiona el botón A, se suma 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
 
 e. Si en STATE_CONFIGURACION se presiona el botón B, se resta 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
+
 
 
 
