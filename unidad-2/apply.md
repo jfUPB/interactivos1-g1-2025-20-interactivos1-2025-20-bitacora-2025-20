@@ -28,7 +28,7 @@ g. Para volver a modo de configuración deberás tocar el botón touch.
 
 **DIAGRAMA DE ESTADOS/EVENTOS/ACCIONES**
 
-![Diagrama de estados, eventos y acciones](C:\Users\Computador\Pictures\Screenshots)
+<img width="500" height="500" alt="Diagrama_Estados_Eventos_Acciones" src="https://github.com/user-attachments/assets/d4f6f42f-dbe3-46aa-8bd0-4a11aec00e56" />
 
 
 ### ACTIVIDAD 05
@@ -109,5 +109,6 @@ c. Si en STATE_EXPLOSION se presiona el "touch", pasa de STATE_EXPLOSION a STATE
 d. Si en STATE_CONFIGURACION se presiona el botón A, se suma 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
 
 e. d. Si en STATE_CONFIGURACION se presiona el botón B, se resta 1 seg al valor de la cuenta regresiva y se muestra en pantalla se muestra el valor de los segundos con los que queda ajustada la cuenta regresiva.
+
 
 
