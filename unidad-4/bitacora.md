@@ -12,7 +12,7 @@ Código a modificar:
 
 [Enlace a la aplicación modificada](URL)
 
-Código a modificao:
+Código modificado:
 
 ``` js
 
@@ -21,3 +21,4 @@ Código a modificao:
 ## Video
 
 [Video demostratativo](URL)
+
