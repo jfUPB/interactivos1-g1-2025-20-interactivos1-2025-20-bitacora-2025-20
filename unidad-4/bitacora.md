@@ -1,11 +1,6 @@
 # Evidencias de la unidad 4
 ___
 
-
-
-
-
-___
 ## Código
 
 [Enlace a la aplicación a modificar](http://www.generative-gestaltung.de/2/sketches/?01_P/P_2_1_2_01)
@@ -91,7 +86,7 @@ function keyReleased() {
 
 ```
 
-[Enlace a la aplicación modificada](URL)
+[Enlace a la aplicación modificada](https://editor.p5js.org/ibanezherrerajuandavid17/sketches/EyXfxkVo1)
 
 Código modificado:
 
@@ -114,110 +109,7 @@ let actRandomSeed = 0;
 let circleAlpha = 130;
 let circleColor;
 
-// --- Variables para micro:bit ---
-let port;
-let connectBtn;
-let accelX = 0;
-let accelY = 0;
-let buttonA = 0;
-let buttonB = 0;
-
-function setup() {
-  createCanvas(600, 600);
-  noFill();
-  circleColor = color(0, 0, 0, circleAlpha);
-
-  // Botón de conexión
-  port = createSerial();
-  connectBtn = createButton('Connect to micro:bit');
-  connectBtn.position(80, 300);
-  connectBtn.mousePressed(connectBtnClick);
-}
-
-function draw() {
-  translate(width / tileCount / 2, height / tileCount / 2);
-  background(255);
-
-  // Actualizar estado del botón de conexión
-  if (!port.opened()) {
-    connectBtn.html('Connect to micro:bit');
-  } else {
-    connectBtn.html('Disconnect');
-  }
-
-  // Leer datos del puerto
-  if (port.available() > 0) {
-    let data = port.readUntil("\n").trim();
-    if (data.length > 0) {
-      let values = data.split(",");
-      if (values.length >= 4) {
-        accelX = int(values[0]);
-        accelY = int(values[1]);
-        buttonA = int(values[2]);
-        buttonB = int(values[3]);
-      }
-    }
-  }
-
-  // Normalizar valores del acelerómetro
-  let normX = map(accelX, -1024, 1024, 0, width);
-  let normY = map(accelY, -1024, 1024, 0, height);
-
-  randomSeed(actRandomSeed);
-
-  stroke(circleColor);
-  strokeWeight(normY / 60);
-
-  for (let gridY = 0; gridY < tileCount; gridY++) {
-    for (let gridX = 0; gridX < tileCount; gridX++) {
-      let posX = width / tileCount * gridX;
-      let posY = height / tileCount * gridY;
-
-      let shiftX = random(-normX, normX) / 20;
-      let shiftY = random(-normX, normX) / 20;
-
-      ellipse(posX + shiftX, posY + shiftY, normY / 15, normY / 15);
-    }
-  }
-
-  // --- Botones del micro:bit ---
-  if (buttonA == 1) {
-    actRandomSeed = random(100000);
-  }
-  if (buttonB == 1) {
-    saveCanvas('microbit_pattern', 'png');
-  }
-}
-
-function connectBtnClick() {
-  if (!port.opened()) {
-    port.open('MicroPython', 115200);
-  } else {
-    port.close();
-  }
-}
-```
-Código 2:
-```js
-/**
- * Adaptado para micro:bit + p5.webserial
- *
- * MICROBIT
- * acelerómetro x      : posición horizontal de círculos
- * acelerómetro y      : tamaño de los círculos
- * botón A             : cambia la semilla (nuevo patrón)
- * botón B             : guarda PNG
- */
-
-'use strict';
-
-let tileCount = 20;
-let actRandomSeed = 0;
-
-let circleAlpha = 130;
-let circleColor;
-
-// --- Variables para micro:bit ---
+// Variables del micro:bit
 let port;
 let connectBtn;
 let accelX = 0;
@@ -232,7 +124,7 @@ function setup() {
   noFill();
   circleColor = color(0, 0, 0, circleAlpha);
 
-  // Botón de conexión
+  //Botón de conexión
   port = createSerial();
   connectBtn = createButton('Connect to micro:bit');
   connectBtn.position(0, 0);
@@ -243,14 +135,13 @@ function draw() {
   translate(width / tileCount / 2, height / tileCount / 2);
   background(255);
 
-  // Actualizar estado del botón de conexión
+  
   if (!port.opened()) {
     connectBtn.html('Connect to micro:bit');
   } else {
     connectBtn.html('Disconnect');
   }
 
-  // Leer datos del puerto
   if (port.available() > 0) {
     let data = port.readUntil("\n").trim();
     if (data.length > 0) {
@@ -258,21 +149,22 @@ function draw() {
       if (values.length >= 4) {
         accelX = int(values[0]);
         accelY = int(values[1]);
-        buttonA = int(values[2]);
-        buttonB = int(values[3]);
+        buttonA = values[2].trim().toLowerCase() === "true";
+        buttonB = values[3].trim().toLowerCase() === "true";
       }
     }
   }
 
-  // Normalizar valores del acelerómetro
+//Se normalizan los valores del acelerómetro
   let normX = map(accelX, -1024, 1024, 0, width);
   let normY = map(accelY, -1024, 1024, 0, height);
 
-  randomSeed(actRandomSeed);
+  randomSeed(actRandomSeed); //Creación de la semilla random para la dispersión de los círculos
 
-  stroke(circleColor);
-  strokeWeight(normY / 60);
+  stroke(circleColor);//Creamos el borde de los circulos
+  strokeWeight(normY / 60);//Establecemos el grosor de los bordes de los circulos
 
+//Recorremos toda la rejilla de círculos
   for (let gridY = 0; gridY < tileCount; gridY++) {
     for (let gridX = 0; gridX < tileCount; gridX++) {
       let posX = width / tileCount * gridX;
@@ -285,15 +177,15 @@ function draw() {
     }
   }
 
-  // --- Botones del micro:bit ---
-  if (buttonA == 1 && lastA === 0) {
+  if (buttonA && !lastA) { //Si se oprime el boton A, se establece una semilla random a la rendija de circulos
     actRandomSeed = random(100000);
-  }
-lastA = buttonA;
-  if (buttonB == 1 && lastB === 0) {
+    }
+  lastA = buttonA;
+
+  if (buttonB && !lastB) { //Si se oprime el botón B, se toma una captura de pantalla del canva en png
     saveCanvas('microbit_pattern', 'png');
-  }
-lastB = buttonB;
+    }
+  lastB = buttonB;
 }
 
 function connectBtnClick() {
@@ -307,6 +199,7 @@ function connectBtnClick() {
 ## Video
 
 [Video demostratativo](URL)
+
 
 
 
