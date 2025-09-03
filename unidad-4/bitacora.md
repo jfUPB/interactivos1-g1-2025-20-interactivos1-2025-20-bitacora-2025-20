@@ -198,7 +198,8 @@ function connectBtnClick() {
 ```
 ## Video
 
-[Video demostratativo de la aplicación](https://youtube.com/shorts/FviZZjC1O2U?si=o8FoW3i9yRsc4FuH)
+[Video demostrativo de la aplicación](https://youtube.com/shorts/7zfQGC_Cr7I?si=SeGuJ2sSCG4d0UDM)
+
 
 
 
