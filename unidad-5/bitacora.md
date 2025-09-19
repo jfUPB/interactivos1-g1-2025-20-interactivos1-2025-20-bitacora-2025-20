@@ -46,3 +46,6 @@ Esto muestra cómo a partir de simples valores booleanos transmitidos en el mens
 ### 5. Captura de figuras hechas con la app:
 
 <img width="746" height="668" alt="Captura de pantalla 2025-09-19 024232" src="https://github.com/user-attachments/assets/8a059e0f-d98d-49aa-a562-b63cb4dd8ba5" />
+
+
+**EVALUACIÓN DE LA UNIDAD:** La verdad soy honesto y siento que mi trabajo en esta unidad fue bastante ausente, las situaciones de la semana me retrasaron mucho en mi proceso y a duras penas pude terminar la actividad 1, no obstante, siento que de esa actividad logré comprender el funcionamiento de la recepción de datos por parte del micro:bit y cómo se procesan estos en el código de p5.js, así que como nota me pondría un 1,5 en esta unidad.
